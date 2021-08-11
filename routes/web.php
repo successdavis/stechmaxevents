@@ -14,21 +14,19 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-require __DIR__.'/auth.php';
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/dashboard', 'DashboardController@index')->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/initializepayment', 'PaymentController@index');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/updateprofile', 'ProfileController@show')->middleware(['auth', 'verified'])->name('updateprofile');
+Route::post('/updateprofile/save', 'ProfileController@profile')->middleware(['auth', 'verified'])->name('saveprofile');
+Route::post('/update-personal-information', 'ProfileController@personalInformation')->middleware(['auth', 'verified'])->name('update-personal-information');
+Route::post('/notification-settings', 'ProfileController@notificationSettings')->middleware(['auth', 'verified'])->name('notification-settings');
+Route::get('/countries', 'CountryController@index')->name('getcountries');
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::post('/api/{user}/avatar', 'UserAvatarController@store')->name('useravatar');
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+require __DIR__.'/auth.php';
 

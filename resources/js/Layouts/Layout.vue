@@ -2,7 +2,6 @@
   <main>
     <header>
       <navbar></navbar>
-      <!-- <WelcomeHero></WelcomeHero> -->
     </header>
     <article>
       <slot />

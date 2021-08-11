@@ -17,21 +17,15 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('max_speakers')->default(0);
+            $table->float('amount', 8, 2);
             $table->foreignId('user_id');
             $table->date('reg_deadline');
+            $table->date('event_date');
             $table->unsignedInteger('manager');
             $table->boolean('published')->default(false); 
-            $table->timestamps();
-        });
-
-
-        Schema::create('channel_event', function(Blueprint $table) {
-            $table->id();
-            $table->foreignId('channel_id')->cascade('delete');
-            $table->foreignId('event_id')->cascade('delete');
             $table->string('venue')->nullable();
+            $table->timestamps();
             $table->string('url')->nullable();
-            $table->date('event_date');
             $table->string('zoom_id')->nullable();
             $table->time('time');
             $table->integer('max_capacity')->default(0); // Define the maximum person that channel can take

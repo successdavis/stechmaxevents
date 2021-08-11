@@ -25,28 +25,23 @@ class EventFactory extends Factory
      */
     public function definition()
     {
+        $date = Carbon::now()->format('Y-m-d');
+        $time = Carbon::now()->format('H:i:s');
+
         return [
             'name'          => $this->faker->sentence(),
+            'amount'        => 500.00,
             'manager'       => function() {
                 return User::factory()->create()->id;
             },
             'user_id'       => function() {
                 return User::factory()->create()->id;
             },
-            'reg_deadline'  => Carbon::now()->add(rand(0,100), 'day')
+            'reg_deadline'  => Carbon::now()->add(rand(0,100), 'day'),
+            'venue' => 'stechmax office',
+            'event_date' => $date,
+            'time' => $time,
+            'url' => 'www.stechmax.com',
         ];
-    }
-
-
-    public function configure()
-    {
-        return $this->afterCreating(function (Event $event) {
-            $channel = Channel::factory()->create();
-
-            $date = Carbon::now()->format('Y-m-d');
-            $time = Carbon::now()->format('H:i:s');
-
-            $event->channels()->attach($channel, ['venue' => 'stechmax office', 'event_date' => $date, 'time' => $time, 'url' => 'www.stechmax.com' ]);
-        });
     }
 }

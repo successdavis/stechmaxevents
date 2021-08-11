@@ -30,19 +30,34 @@
 	      </div>
 	      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 	        <div class="flex-shrink-0 flex items-center">
-	          <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-	          <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
+	          <Link href="/">
+                <BreezeApplicationLogo class="w-40 fill-current text-gray-500" />
+            </Link>
 	        </div>
 	        <div class="hidden sm:block sm:ml-6">
 	          <div class="flex space-x-4">
 	            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-	            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
+	            <!-- <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Hooome</a> -->
 
-	            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
+              <Link href="/home" aria-current="page" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+                Home
+              </Link>
 
-	            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+              <Link href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                About
+              </Link>
 
-	            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
+              <Link href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Speakers
+              </Link>
+
+              <Link href="www.sleettech.com" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Blog
+              </Link>
+
+              <Link href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Contact
+              </Link>
 	          </div>
 	        </div>
 	      </div>
@@ -102,7 +117,15 @@
 </template>
 
 <script>
+import { Head, Link } from '@inertiajs/inertia-vue3';
+import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue'
+
 export default {
+    components: {
+      Head,
+      Link,
+      BreezeApplicationLogo,
+    },
   data () {
     return {
       profilemenu: false,
