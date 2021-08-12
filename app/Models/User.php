@@ -26,6 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar_path',
     ];
 
+    protected $appends = ['isRegistered'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -67,6 +69,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isRegistered() {
         return $this->payments()->exists();
+    }
+
+    public function getIsRegisteredAttribute() {
+        return $this->isRegistered();
     }
 
     public function country() {

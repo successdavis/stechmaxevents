@@ -9,7 +9,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight"></h2>
         </template>
 
-        <div v-show="!isRegistered" class="max-w-md mt-12 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <div v-show="!user.isRegistered" class="max-w-md mt-12 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
           <div class="md:flex">
             <div class="md:flex-shrink-0">
               <img class="h-48 w-full object-cover md:h-full md:w-48" src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt="A laptop for online streaming">
@@ -29,14 +29,23 @@
             </div>
           </div>
         </div>
+
+        <div v-show="user.isRegistered" class="p-8 bg-yellow-800">
+            <h3 class="text-xl text-white text-center">Thank you, for reserving a seat.</h3>
+        </div>
     </BreezeAuthenticatedLayout>
 </template>
 
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import { computed } from 'vue'
+import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 
 export default {
+    setup() {
+        const user = computed(() => usePage().props.value.auth.user)
+        return { user }
+    },
     components: {
         BreezeAuthenticatedLayout,
         Head,
@@ -44,7 +53,6 @@ export default {
     },
 
     props: {
-        isRegistered: {default: false},
         paymentsuccessful: {default: false},
     },
 }

@@ -5,7 +5,7 @@
 
         <div class="container max-w-7xl mx-auto">
             <div class="leading-loose mt-16  space-x-4 px-4 grid gap-x-4 grid-cols-1 md:grid-cols-3">
-                <div class="">
+                <div class="" id="why-you-should-join">
                     <h4 class="text-4xl my-8">Why you Should Join Event</h4>
                     <p class="my-8 text-justify ">Hands down the quickest way to make a lot of money from home (well, without breaking the law). Lots of persons have genuinely made $100s from this technique. It's completely legal, risk free, tax free, and anyone over 18 can do it</p>
                     <Link :href="route('register')" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
@@ -33,7 +33,7 @@
                 </div>       
             </div>
 
-            <div container mx-auto px-4>
+            <div class="container mx-auto px-4" id="speakers">
                 <h3 class="text-4xl my-8 text-center">Speakers</h3>
                 <div class="flex justify-center flex-wrap space-x-8 ">
                     <div>
@@ -83,11 +83,11 @@
                 </div>
             </div>
 
-            <div class="my-24 px-8 container leading-loose">
+            <div class="my-24 px-8 container leading-loose" id="about-the-programme">
                 <div>
                     <h4 class="text-center text-4xl mb-4">About the Programme</h4>
                     <p class="text-justify">There’s less than {{daysRemaining()}} to go until our {{currentevent.name}} event and for those of you yet to sign up, here are key reasons to attend that we hope will tempt you into saving your seat/online space at this 'not-to-be-missed' event.</p>
-                    <p class="text-justify">Our world today is undeniably digital. New technologies – from social media and GPS systems to artificial intelligence and digital twins – make the planet we inhabit unrecognisable from even 20 years ago, all these has led to new ways of making money, in our today's world you can earn even while you sleep. Definitely you must have heard of terms like bitcoin, crypto, youtube, forex trading, google adsense, facebook and even work from home. Have you ever wondered how online comedians and content creators make their fortune? would you like to find out? that's exactly what this program is meant for. I have worked from home every day for over 3 years. I love it, and I want to share it with you. What if I told you that this program will not only tell you about the new ways of earning, but will provide you with a roadmap to a successful career.</p>
+                    <p class="text-justify">Our world today is undeniably digital. New technologies – from social media and GPS systems to Artificial Intelligence and digital twins – make the planet we inhabit unrecognisable from even 20 years ago, all these has led to new innovations and providing new ways of making money daily, in our today's world you can earn even while you sleep. Definitely you must have heard of terms like bitcoin mining, crypto-trading, youtube, forex trading, google adsense, facebook and even digital marketing all from the comfort of your home. Have you ever wondered how online comedians and content creators make their fortune? would you like to find out? that's exactly what this program is meant for. I have worked from home every day for over 3 years. I love it, and I want to share it with you. What if I told you that this program will not only tell you about the new ways of earning, but will provide you with a platform to learn and earn with a clear road map to a successful and comfortable career.</p>
                 </div>
 
                 <ol class="mt-4 list-decimal">
@@ -98,9 +98,14 @@
                 </ol>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 my-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 my-8" id="contacts">
                 <div class="bg-yellow-700 p-8 md:mx-12 text-white"><a class="text-2xl text-white font-bold" href="mailto:m.bluth@example.com">Email: event@stechmax.com</a></div>
                 <div class="bg-purple-600 font-bold p-8 md:mx-12 text-2xl text-white">Help Line: +234-705-2539-151</div>
+            </div>
+            <div class="my-24 px-8 container leading-loose" id="who we are">
+                    <h4 class="text-center text-4xl mb-4">Who we are</h4>
+                <p>Since 2013, Success Computers now known as Success Techmax has grown to become the #1 IT Training Company within her local. We offer much more than just IT. We offer Business Technology Solutions. 
+Our IT & Business Solutions help your start-up businesses and company keep up with the innovative trends in your industry, making your business more adaptable and therefore more competitive. </p>
             </div>
         </div>
     </div>

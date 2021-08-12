@@ -43,19 +43,23 @@
                 Home
               </Link>
 
-              <Link href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="#about-the-programme" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 About
               </Link>
 
-              <Link href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="#speakers" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Speakers
+              </Link>
+
+              <Link href="#why-you-should-join" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Why Join
               </Link>
 
               <Link href="www.sleettech.com" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Blog
               </Link>
 
-              <Link href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="#contacts" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Contact
               </Link>
 	          </div>
@@ -75,7 +79,7 @@
 	          <div>
 	            <button @click="toggleProfileMenu" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
 	              <span class="sr-only">Open user menu</span>
-	              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+	              <img class="h-8 w-8 rounded-full" :src="user ? user.avatar_path : '' " alt="user image">
 	            </button>
 	          </div>
 
@@ -89,11 +93,18 @@
 	              From: "transform opacity-100 scale-100"
 	              To: "transform opacity-0 scale-95"
 	          -->
-	          <div v-show="profilemenu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+	          <div v-show="profilemenu" style="z-index: 2" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
 	            <!-- Active: "bg-gray-100", Not Active: "" -->
-	            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-	            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-	            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+
+	            <Link v-show="user !== null" href="/dashbsoard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</Link>
+	            <Link v-show="user !== null" href="/updateprofile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</Link>
+
+
+	            <Link v-show="user !== null" href="/logout" class="block px-4 py-2 text-sm text-gray-700" tabindex="-1" id="user-menu-item-2" method="post" as="button" type="button">Sign Out</Link>
+
+	            <Link v-show="user === null" href="/register" class="block px-4 py-2 text-sm text-gray-700" tabindex="-1" id="user-menu-item-2" method="get" as="button" type="button">Buy Ticket</Link>
+
+	            <Link v-show="user === null" href="/login" class="block px-4 py-2 text-sm text-gray-700" tabindex="-1" id="user-menu-item-2" method="get" as="button" type="button">Sign In</Link>
 	          </div>
 	        </div>
 	      </div>
@@ -104,33 +115,58 @@
 	  <div v-show="mobilemenu" class="sm:hidden" id="mobile-menu">
 	    <div class="px-2 pt-2 pb-3 space-y-1">
 	      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-	      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashbsoard</a>
+	      			<Link href="/home" aria-current="page" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                Home
+              </Link>
 
-	      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
+              <Link href="#about-the-programme" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                About
+              </Link>
 
-	      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+              <Link href="#speakers" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                Speakers
+              </Link>
 
-	      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+              <Link href="#why-you-should-join" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                Why Join
+              </Link>
+
+              <Link href="www.sleettech.com" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                Blog
+              </Link>
+
+              <Link href="#contacts" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                Contact
+              </Link>
+
 	    </div>
 	  </div>
 	</nav>
 </template>
 
 <script>
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
+import { computed } from 'vue'
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue'
 
 export default {
-    components: {
+	setup() {
+      const user = computed(() => usePage().props.value.auth.user)
+      return { user }
+  },
+
+  components: {
       Head,
       Link,
       BreezeApplicationLogo,
-    },
-  data () {
-    return {
-      profilemenu: false,
-      mobilemenu: false,
-    }
+  },
+
+	data () {
+	    return {
+	      profilemenu: false,
+	      mobilemenu: false,
+	    }
+
   },
 
   methods: {
