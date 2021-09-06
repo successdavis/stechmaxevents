@@ -37,6 +37,8 @@ class PaymentController extends Controller
             ],
         ];
 
+        dd($data);
+
         $url = "https://api.paystack.co/transaction/initialize";
 
         $fields_string = http_build_query($data);
