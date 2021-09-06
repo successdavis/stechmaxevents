@@ -104,7 +104,7 @@
             </div>
             <div class="my-24 px-8 container leading-loose" id="who we are">
                     <h4 class="text-center text-4xl mb-4">Who we are</h4>
-                <p>Since 2013, Success Computers now known as Success Techmax has grown to become the #1 IT Training Company within her local. We offer much more than just IT. We offer Business Technology Solutions. 
+                <p>Since 2013, Success Computers now known as <a href="https://stechmax.com">Success Techmax</a> has grown to become the #1 IT Training Company within her local. We offer much more than just IT. We offer Business Technology Solutions. 
 Our IT & Business Solutions help your start-up businesses and company keep up with the innovative trends in your industry, making your business more adaptable and therefore more competitive. </p>
             </div>
         </div>
